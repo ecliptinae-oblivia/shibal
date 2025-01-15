@@ -5,6 +5,8 @@
 !README.md
 
 !CMakeLists.txt
+!include/
+!include/**
 !src/
 !src/**
 !vendor/

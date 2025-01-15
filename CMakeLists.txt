@@ -35,11 +35,13 @@ set(imgui_include "vendor/imgui")
 set(
 	project_src
 	"src/ecliptinae-oblivia/shibal/main.cxx"
+	"src/ecliptinae-oblivia/shibal/Window.cxx"
 )
+set(project_include "include")
 
 add_executable(${PROJECT_NAME} ${project_src} ${glad_src} ${imgui_src})
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${glad_include} ${imgui_include})
+target_include_directories(${PROJECT_NAME} PRIVATE ${project_include} ${glad_include} ${imgui_include})
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
