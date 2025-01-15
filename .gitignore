@@ -7,3 +7,5 @@
 !CMakeLists.txt
 !src/
 !src/**
+!vendor/
+!vendor/**

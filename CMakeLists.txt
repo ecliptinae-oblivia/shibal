@@ -8,17 +8,26 @@ cmake_minimum_required(VERSION 3.21)
 project(
 	"shibal"
 	VERSION 0.1.0
-	LANGUAGES CXX
+	LANGUAGES C CXX
 )
 
 
 
-add_executable(
-	${PROJECT_NAME}
-	"src/main.cxx"
-)
+add_subdirectory("vendor/glfw")
+
+set(glad_src "vendor/glad/src/glad.c")
+set(glad_include "vendor/glad/include")
+
+set(imgui_src "vendor/imgui/backends/imgui_impl_glfw.cpp" "vendor/imgui/backends/imgui_impl_opengl3.cpp")
+set(imgui_include "vendor/imgui")
 
 
+
+add_executable(${PROJECT_NAME} "src/main.cxx" ${glad_src} ${imgui_src})
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${glad_include} ${imgui_include})
+
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
