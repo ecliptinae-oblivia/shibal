@@ -18,7 +18,16 @@ add_subdirectory("vendor/glfw")
 set(glad_src "vendor/glad/src/glad.c")
 set(glad_include "vendor/glad/include")
 
-set(imgui_src "vendor/imgui/backends/imgui_impl_glfw.cpp" "vendor/imgui/backends/imgui_impl_opengl3.cpp")
+set(
+	imgui_src
+	"vendor/imgui/backends/imgui_impl_glfw.cpp"
+	"vendor/imgui/backends/imgui_impl_opengl3.cpp"
+	"vendor/imgui/imgui.cpp"
+	"vendor/imgui/imgui_demo.cpp"
+	"vendor/imgui/imgui_draw.cpp"
+	"vendor/imgui/imgui_tables.cpp"
+	"vendor/imgui/imgui_widgets.cpp"
+)
 set(imgui_include "vendor/imgui")
 
 
