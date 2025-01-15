@@ -32,7 +32,12 @@ set(imgui_include "vendor/imgui")
 
 
 
-add_executable(${PROJECT_NAME} "src/main.cxx" ${glad_src} ${imgui_src})
+set(
+	project_src
+	"src/ecliptinae-oblivia/shibal/main.cxx"
+)
+
+add_executable(${PROJECT_NAME} ${project_src} ${glad_src} ${imgui_src})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${glad_include} ${imgui_include})
 
