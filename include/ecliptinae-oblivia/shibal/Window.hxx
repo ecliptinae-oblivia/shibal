@@ -36,7 +36,7 @@ namespace ecliptinae_oblivia::shibal
 
 
 	template<typename T> requires std::invocable<T>
-	auto Window::loop(T f) -> void
+	auto Window::loop(T body) -> void
 	{
 		while (!glfwWindowShouldClose(m_window))
 		{
@@ -44,7 +44,7 @@ namespace ecliptinae_oblivia::shibal
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui::NewFrame();
 
-			f();
+			body();
 
 			ImGui::Render();
 
