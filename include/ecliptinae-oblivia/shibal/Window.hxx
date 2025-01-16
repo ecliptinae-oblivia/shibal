@@ -26,7 +26,8 @@ namespace ecliptinae_oblivia::shibal
 		~Window() noexcept;
 
 	public:
-		auto loop(std::invocable auto f) -> void;
+		template<typename T> requires std::invocable<T>
+		auto loop(T f) -> void;
 
 	private:
 		GLFWwindow *m_window;
@@ -34,7 +35,8 @@ namespace ecliptinae_oblivia::shibal
 
 
 
-	auto Window::loop(std::invocable auto f) -> void
+	template<typename T> requires std::invocable<T>
+	auto Window::loop(T f) -> void
 	{
 		while (!glfwWindowShouldClose(m_window))
 		{
