@@ -34,6 +34,16 @@ auto main() -> int
 			{
 				ImGui::ShowDemoWindow();
 			}
+
+			ImGui::Separator();
+
+			shibal::ui::tab_bar("tabs", ImGuiTabBarFlags_None, []() -> void
+			{
+				shibal::ui::tab_item("Todo", nullptr, ImGuiTabItemFlags_None, []() -> void
+				{
+
+				});
+			});
 		});
 	});
 
