@@ -6,11 +6,59 @@
 #ifndef ECLIPTINAE_OBLIVIA_SHIBAL_INCLUDE_ECLIPTINAE_OBLIVIA_SHIBAL_WINDOW_HXX
 #define ECLIPTINAE_OBLIVIA_SHIBAL_INCLUDE_ECLIPTINAE_OBLIVIA_SHIBAL_WINDOW_HXX
 
+#include <concepts>
+
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
+
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
+#include "imgui.h"
+
 
 
 namespace ecliptinae_oblivia::shibal
 {
+	class Window
+	{
+	public:
+		Window();
+		~Window() noexcept;
 
+	public:
+		auto loop(std::invocable auto f) -> void;
+
+	private:
+		GLFWwindow *m_window;
+	};
+
+
+
+	auto Window::loop(std::invocable auto f) -> void
+	{
+		while (!glfwWindowShouldClose(m_window))
+		{
+			ImGui_ImplGlfw_NewFrame();
+			ImGui_ImplOpenGL3_NewFrame();
+			ImGui::NewFrame();
+
+			f();
+
+			ImGui::Render();
+
+			auto width = 0;
+			auto height = 0;
+			glfwGetFramebufferSize(m_window, &width, &height);
+			glViewport(0, 0, width, height);
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+			glfwSwapBuffers(m_window);
+			glfwPollEvents();
+		}
+	}
 }
 
 
