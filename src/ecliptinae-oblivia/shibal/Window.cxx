@@ -39,7 +39,7 @@ namespace ecliptinae_oblivia::shibal
 		ImGui::CreateContext();
 		[[maybe_unused]] auto &io = ImGui::GetIO();
 
-		ImGui::StyleColorsDark();
+		ImGui::StyleColorsLight();
 
 		if (!ImGui_ImplGlfw_InitForOpenGL(m_window, true))
 		{
