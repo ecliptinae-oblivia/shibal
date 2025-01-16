@@ -5,9 +5,11 @@
 
 #include <cstdlib>
 
-#include "ecliptinae-oblivia/shibal/Window.hxx"
-
 #include "imgui.h"
+
+#include "ecliptinae-oblivia/shibal/Window.hxx"
+#include "ecliptinae-oblivia/shibal/ui.hxx"
+
 
 
 
@@ -24,7 +26,7 @@ auto main() -> int
 		auto const *viewport = ImGui::GetMainViewport();
 		ImGui::SetNextWindowPos(viewport->WorkPos);
 		ImGui::SetNextWindowSize(viewport->WorkSize);
-		if (ImGui::Begin("shibal", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoBringToFrontOnFocus))
+		shibal::ui::window("shibal", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoBringToFrontOnFocus, [&]() -> void
 		{
 			ImGui::Checkbox("Show Demo Window", &show_demo_window);
 
@@ -32,8 +34,7 @@ auto main() -> int
 			{
 				ImGui::ShowDemoWindow();
 			}
-		}
-		ImGui::End();
+		});
 	});
 
 	return EXIT_SUCCESS;
